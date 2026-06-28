@@ -1,10 +1,39 @@
-[
-  {
-    "id": 1,
-    "name": "Exemplo de Presente",
-    "url": "https://www.google.com",
-    "image": "https://via.placeholder.com/300x210?text=Presente",
-    "price": "R$ 99,90",
-    "category": "Casa"
-  }
-]
+{
+  "gifts": [
+    {
+      "id": "g001",
+      "name": "Jogo de Panelas Tramontina",
+      "description": "Conjunto com 5 peças, antiaderente, ideal para o dia a dia.",
+      "store": "Tok&Stok",
+      "url": "https://www.tokstok.com.br",
+      "price": 450,
+      "reserved": false,
+      "reservedBy": null,
+      "category": "Cozinha"
+    },
+    {
+      "id": "g002",
+      "name": "Jogo de Cama Queen 300 fios",
+      "description": "Lençol, fronhas e edredom em algodão egipcio.",
+      "store": "Camicado",
+      "url": "https://www.camicado.com.br",
+      "price": 680,
+      "reserved": false,
+      "reservedBy": null,
+      "category": "Quarto"
+    },
+    {
+      "id": "g003",
+      "name": "Fundo Lua de Mel — Lisboa & Paris",
+      "description": "Nossa viagem dos sonhos! Qualquer valor é bem-vindo. ✈️",
+      "store": "PIX",
+      "url": null,
+      "price": null,
+      "reserved": false,
+      "reservedBy": null,
+      "category": "Experiência"
+    }
+  ],
+  "pix_key": "casamento@email.com",
+  "updated_at": "2025-01-01T00:00:00Z"
+}
