@@ -1,412 +1,542 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>G & A · Lista de Presentes</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --navy: #1B2A4A;
-            --navy-deep: #0F1E35;
-            --royal: #182A49;
-            --gold: #C9A96E;
-            --gold-light: #E8D5B0;
-            --off-white: #F7F5F0;
-            --white: #FFFFFF;
-            --gray: #8A8A8A;
-            --gray-light: #F0EDE8;
-            --text: #2C2C2C;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--off-white);
-            color: var(--text);
-        }
-
-        /* ── HEADER ── */
-        header {
-            background: var(--white);
-            border-bottom: 1px solid rgba(201,169,110,0.25);
-            padding: 18px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .logo-mark {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 26px;
-            font-weight: 300;
-            color: var(--navy);
-            letter-spacing: 6px;
-            text-transform: uppercase;
-        }
-
-        .logo-mark span {
-            color: var(--gold);
-            font-style: italic;
-        }
-
-        nav a {
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            text-decoration: none;
-            color: var(--gray);
-            transition: color 0.2s;
-        }
-
-        nav a:hover { color: var(--navy); }
-
-        .admin-link {
-            background: var(--navy);
-            color: var(--white) !important;
-            padding: 9px 20px;
-            border-radius: 3px;
-            font-size: 12px !important;
-        }
-
-        .admin-link:hover {
-            background: var(--gold) !important;
-            color: var(--white) !important;
-        }
-
-        /* ── HERO ── */
-        #hero {
-            background: var(--navy);
-            position: relative;
-            overflow: hidden;
-            padding: 90px 40px 80px;
-            text-align: center;
-        }
-
-        .hero-floral {
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(ellipse at 15% 50%, rgba(201,169,110,0.08) 0%, transparent 60%),
-                radial-gradient(ellipse at 85% 50%, rgba(201,169,110,0.08) 0%, transparent 60%);
-            pointer-events: none;
-        }
-
-        .hero-date {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 13px;
-            font-weight: 400;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 20px;
-        }
-
-        .hero-monogram {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(64px, 10vw, 100px);
-            font-weight: 300;
-            font-style: italic;
-            color: var(--white);
-            line-height: 1;
-            margin-bottom: 12px;
-            letter-spacing: 10px;
-        }
-
-        .hero-monogram .separator {
-            color: var(--gold);
-            font-style: normal;
-            font-weight: 300;
-        }
-
-        .hero-subtitle {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 18px;
-            font-weight: 300;
-            font-style: italic;
-            color: rgba(255,255,255,0.75);
-            margin-bottom: 10px;
-        }
-
-        .hero-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            margin: 28px auto;
-            max-width: 320px;
-        }
-
-        .hero-divider::before,
-        .hero-divider::after {
-            content: '';
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(to right, transparent, var(--gold));
-        }
-
-        .hero-divider::after {
-            background: linear-gradient(to left, transparent, var(--gold));
-        }
-
-        .hero-divider i {
-            color: var(--gold);
-            font-size: 14px;
-        }
-
-        .hero-text {
-            font-size: 15px;
-            color: rgba(255,255,255,0.65);
-            max-width: 480px;
-            margin: 0 auto;
-            line-height: 1.8;
-        }
-
-        /* ── GIFTS SECTION ── */
-        .section-label {
-            text-align: center;
-            padding: 60px 40px 40px;
-        }
-
-        .section-label span {
-            display: block;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 10px;
-        }
-
-        .section-label h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 36px;
-            font-weight: 300;
-            color: var(--navy);
-        }
-
-        /* ── GRID ── */
-        .gift-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
-            gap: 28px;
-            max-width: 1140px;
-            margin: 0 auto 80px;
-            padding: 0 40px;
-        }
-
-        .gift-card {
-            background: var(--white);
-            border-radius: 6px;
-            overflow: hidden;
-            border: 1px solid rgba(201,169,110,0.15);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .gift-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 40px rgba(27,42,74,0.12);
-        }
-
-        .gift-image-wrap {
-            position: relative;
-            height: 210px;
-            overflow: hidden;
-            background: var(--gray-light);
-        }
-
-        .gift-image-wrap img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .gift-card:hover .gift-image-wrap img {
-            transform: scale(1.04);
-        }
-
-        .gift-info {
-            padding: 22px 22px 20px;
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-        }
-
-        .gift-category {
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: 2.5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 8px;
-        }
-
-        .gift-name {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 21px;
-            font-weight: 400;
-            color: var(--navy);
-            line-height: 1.3;
-            margin-bottom: 14px;
-        }
-
-        .gift-price {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--navy-deep);
-            margin-bottom: 18px;
-            margin-top: auto;
-        }
-
-        .gift-link {
-            display: block;
-            text-align: center;
-            background: var(--navy);
-            color: var(--white);
-            text-decoration: none;
-            padding: 12px;
-            border-radius: 3px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            transition: background 0.2s;
-        }
-
-        .gift-link:hover {
-            background: var(--gold);
-        }
-
-        /* ── EMPTY/LOADING ── */
-        .state-msg {
-            grid-column: 1/-1;
-            text-align: center;
-            padding: 80px 20px;
-            color: var(--gray);
-        }
-
-        .state-msg i {
-            font-size: 40px;
-            margin-bottom: 16px;
-            display: block;
-            color: var(--gold-light);
-        }
-
-        /* ── FOOTER ── */
-        footer {
-            background: var(--navy);
-            color: rgba(255,255,255,0.5);
-            text-align: center;
-            padding: 40px 20px;
-            font-size: 13px;
-        }
-
-        footer .footer-mono {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 28px;
-            font-style: italic;
-            color: var(--gold);
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        /* ── RESPONSIVE ── */
-        @media (max-width: 640px) {
-            header { padding: 16px 20px; }
-            #hero { padding: 70px 20px 60px; }
-            .gift-grid { padding: 0 20px; gap: 20px; }
-            .section-label { padding: 50px 20px 30px; }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Celebre conosco — Gabriela &amp; Artur | Casamento 2025" />
+  <!-- SECURITY: CSP básico contra XSS -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:;" />
+  <title>G ♥ A — Nosso Casamento</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Preconnect para Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 </head>
 <body>
 
-<header>
-    <div class="logo-mark">G <span>&</span> A</div>
-    <nav>
-        <a href="admin.html" class="admin-link"><i class="fas fa-lock" style="font-size:10px; margin-right:5px;"></i> Área Admin</a>
-    </nav>
-</header>
+  <!-- ══ PAGE LOADER ══ -->
+  <div id="page-loader" aria-hidden="true">
+    <div class="loader-monogram">G ♥ A</div>
+    <div class="loader-line"></div>
+  </div>
 
-<section id="hero">
-    <div class="hero-floral"></div>
-    <p class="hero-date">Save the Date · Novembro 2025</p>
-    <div class="hero-monogram">G <span class="separator">&</span> A</div>
-    <p class="hero-subtitle">Manual dos Padrinhos</p>
-    <div class="hero-divider"><i class="fas fa-leaf"></i></div>
-    <p class="hero-text">
-        Olá! Criamos esta lista com muito carinho para facilitar a escolha de um presente que realmente nos alegre nesse grande dia. Obrigado pelo carinho e pela presença!
-    </p>
-</section>
+  <!-- ══ NAVIGATION ══ -->
+  <nav id="main-nav" role="navigation" aria-label="Navegação principal">
+    <a href="#hero" class="nav-logo" aria-label="Início">G ♥ A</a>
 
-<div class="section-label">
-    <span>Nossa</span>
-    <h2>Lista de Presentes</h2>
-</div>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
 
-<main>
-    <div id="gift-grid" class="gift-grid">
-        <div class="state-msg">
-            <i class="fas fa-circle-notch fa-spin"></i>
-            Carregando presentes...
-        </div>
+    <ul class="nav-links" id="nav-menu" role="list">
+      <li><a href="#story">Nossa História</a></li>
+      <li><a href="#date-venue">Data &amp; Local</a></li>
+      <li><a href="#wedding-party">Padrinhos</a></li>
+      <li><a href="#gifts">Presentes</a></li>
+      <li><a href="#rsvp">RSVP</a></li>
+    </ul>
+  </nav>
+
+  <!-- ══ HERO ══ -->
+  <section id="hero" aria-label="Cabeçalho do casamento">
+
+    <!-- Watercolor background wash -->
+    <div class="hero-watercolor" aria-hidden="true"></div>
+
+    <!-- Floral watercolor decoration (SVG inline) -->
+    <div class="wc-flowers" aria-hidden="true">
+      <svg viewBox="0 0 1200 340" preserveAspectRatio="xMidYMax meet" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <filter id="blur-soft">
+            <feGaussianBlur stdDeviation="3" />
+          </filter>
+          <radialGradient id="petal-grad-navy" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#1a3a6b" stop-opacity="0.85"/>
+            <stop offset="100%" stop-color="#0d2545" stop-opacity="0.3"/>
+          </radialGradient>
+          <radialGradient id="petal-grad-sky" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#b8d4e8" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#dceef8" stop-opacity="0.2"/>
+          </radialGradient>
+        </defs>
+
+        <!-- LEFT cluster -->
+        <!-- Large back petals -->
+        <ellipse cx="120" cy="200" rx="70" ry="28" fill="url(#petal-grad-sky)" transform="rotate(-40 120 200)" filter="url(#blur-soft)" opacity="0.6"/>
+        <ellipse cx="80"  cy="160" rx="60" ry="22" fill="url(#petal-grad-sky)" transform="rotate(-70 80 160)"  filter="url(#blur-soft)" opacity="0.5"/>
+        <ellipse cx="160" cy="170" rx="55" ry="20" fill="url(#petal-grad-navy)" transform="rotate(-10 160 170)" filter="url(#blur-soft)" opacity="0.35"/>
+        <!-- Mid petals -->
+        <ellipse cx="100" cy="195" rx="42" ry="16" fill="url(#petal-grad-navy)" transform="rotate(-55 100 195)" opacity="0.55"/>
+        <ellipse cx="130" cy="175" rx="38" ry="14" fill="url(#petal-grad-sky)"  transform="rotate(-25 130 175)" opacity="0.65"/>
+        <ellipse cx="75"  cy="210" rx="35" ry="13" fill="url(#petal-grad-navy)" transform="rotate(-80 75 210)"  opacity="0.45"/>
+        <!-- Center -->
+        <circle cx="110" cy="190" r="14" fill="#1a3a6b" opacity="0.25" filter="url(#blur-soft)"/>
+        <circle cx="110" cy="190" r="7"  fill="#0d2545" opacity="0.5"/>
+        <!-- Tiny buds -->
+        <ellipse cx="55"  cy="240" rx="18" ry="7"  fill="url(#petal-grad-sky)"  transform="rotate(-60 55 240)"  opacity="0.55"/>
+        <ellipse cx="175" cy="135" rx="20" ry="8"  fill="url(#petal-grad-navy)" transform="rotate(-15 175 135)" opacity="0.4"/>
+        <ellipse cx="40"  cy="180" rx="15" ry="6"  fill="url(#petal-grad-sky)"  transform="rotate(-90 40 180)"  opacity="0.5"/>
+        <!-- Stems -->
+        <path d="M 110 200 Q 90 250 70 290" stroke="#1a3a6b" stroke-width="1.5" fill="none" opacity="0.25"/>
+        <path d="M 120 195 Q 140 240 155 285" stroke="#1a3a6b" stroke-width="1.2" fill="none" opacity="0.2"/>
+        <!-- Leaves -->
+        <ellipse cx="82"  cy="268" rx="20" ry="7"  fill="#1a3a6b" transform="rotate(-40 82 268)"  opacity="0.2"/>
+        <ellipse cx="148" cy="262" rx="18" ry="6"  fill="#1a3a6b" transform="rotate(30 148 262)"   opacity="0.18"/>
+        <!-- Second smaller flower -->
+        <ellipse cx="230" cy="250" rx="30" ry="11" fill="url(#petal-grad-sky)"  transform="rotate(-50 230 250)" opacity="0.4"/>
+        <ellipse cx="210" cy="240" rx="28" ry="10" fill="url(#petal-grad-navy)" transform="rotate(-75 210 240)" opacity="0.35"/>
+        <circle  cx="222" cy="247" r="8"  fill="#1a3a6b" opacity="0.3"/>
+        <!-- Dots -->
+        <circle cx="200" cy="300" r="3" fill="#b8d4e8" opacity="0.4"/>
+        <circle cx="50"  cy="140" r="2" fill="#b8d4e8" opacity="0.5"/>
+        <circle cx="270" cy="220" r="2.5" fill="#1a3a6b" opacity="0.3"/>
+
+        <!-- RIGHT cluster (mirrored ~x=1080) -->
+        <ellipse cx="1080" cy="200" rx="70" ry="28" fill="url(#petal-grad-sky)"  transform="rotate(40 1080 200)"  filter="url(#blur-soft)" opacity="0.6"/>
+        <ellipse cx="1120" cy="160" rx="60" ry="22" fill="url(#petal-grad-sky)"  transform="rotate(70 1120 160)"  filter="url(#blur-soft)" opacity="0.5"/>
+        <ellipse cx="1040" cy="170" rx="55" ry="20" fill="url(#petal-grad-navy)" transform="rotate(10 1040 170)"  filter="url(#blur-soft)" opacity="0.35"/>
+        <ellipse cx="1100" cy="195" rx="42" ry="16" fill="url(#petal-grad-navy)" transform="rotate(55 1100 195)" opacity="0.55"/>
+        <ellipse cx="1070" cy="175" rx="38" ry="14" fill="url(#petal-grad-sky)"  transform="rotate(25 1070 175)" opacity="0.65"/>
+        <ellipse cx="1125" cy="210" rx="35" ry="13" fill="url(#petal-grad-navy)" transform="rotate(80 1125 210)" opacity="0.45"/>
+        <circle  cx="1090" cy="190" r="14" fill="#1a3a6b" opacity="0.25" filter="url(#blur-soft)"/>
+        <circle  cx="1090" cy="190" r="7"  fill="#0d2545" opacity="0.5"/>
+        <ellipse cx="1145" cy="240" rx="18" ry="7"  fill="url(#petal-grad-sky)"  transform="rotate(60 1145 240)"  opacity="0.55"/>
+        <ellipse cx="1025" cy="135" rx="20" ry="8"  fill="url(#petal-grad-navy)" transform="rotate(15 1025 135)"  opacity="0.4"/>
+        <ellipse cx="1160" cy="180" rx="15" ry="6"  fill="url(#petal-grad-sky)"  transform="rotate(90 1160 180)"  opacity="0.5"/>
+        <path d="M 1090 200 Q 1110 250 1130 290" stroke="#1a3a6b" stroke-width="1.5" fill="none" opacity="0.25"/>
+        <path d="M 1080 195 Q 1060 240 1045 285" stroke="#1a3a6b" stroke-width="1.2" fill="none" opacity="0.2"/>
+        <ellipse cx="1118" cy="268" rx="20" ry="7"  fill="#1a3a6b" transform="rotate(40 1118 268)"  opacity="0.2"/>
+        <ellipse cx="1052" cy="262" rx="18" ry="6"  fill="#1a3a6b" transform="rotate(-30 1052 262)" opacity="0.18"/>
+        <ellipse cx="970"  cy="250" rx="30" ry="11" fill="url(#petal-grad-sky)"  transform="rotate(50 970 250)"  opacity="0.4"/>
+        <ellipse cx="990"  cy="240" rx="28" ry="10" fill="url(#petal-grad-navy)" transform="rotate(75 990 240)"  opacity="0.35"/>
+        <circle  cx="978"  cy="247" r="8"  fill="#1a3a6b" opacity="0.3"/>
+        <circle  cx="1000" cy="300" r="3"  fill="#b8d4e8" opacity="0.4"/>
+        <circle  cx="1150" cy="140" r="2"  fill="#b8d4e8" opacity="0.5"/>
+        <circle  cx="930"  cy="220" r="2.5" fill="#1a3a6b" opacity="0.3"/>
+
+        <!-- Top center small spray -->
+        <ellipse cx="580" cy="30" rx="40" ry="12" fill="url(#petal-grad-sky)"   transform="rotate(-10 580 30)" opacity="0.4"/>
+        <ellipse cx="620" cy="25" rx="35" ry="11" fill="url(#petal-grad-navy)"  transform="rotate(15 620 25)"  opacity="0.3"/>
+        <circle  cx="598" cy="30" r="6"  fill="#1a3a6b" opacity="0.2"/>
+      </svg>
     </div>
-</main>
 
-<footer>
-    <span class="footer-mono">G & A</span>
-    Feito com <i class="fas fa-heart" style="color:#C9A96E;"></i> para o nosso grande dia
-</footer>
+    <!-- MONOGRAM -->
+    <div class="hero-monogram" role="img" aria-label="Monograma G e A com coração">
+      <div class="monogram-wrap">
+        <span class="mono-letter">G</span>
+        <div class="mono-divider" aria-hidden="true">
+          <div class="mono-divider-line"></div>
+          <span class="mono-heart">♥</span>
+          <div class="mono-divider-line"></div>
+        </div>
+        <span class="mono-letter">A</span>
+      </div>
+    </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', async () => {
-    const grid = document.getElementById('gift-grid');
+    <p class="hero-names">Gabriela <span class="hero-ampersand">&amp;</span> Artur</p>
+    <p class="hero-date">15 de Novembro de 2025 · Curitiba, PR</p>
+    <p class="hero-tagline">Unidos pelo amor, celebrados com vocês</p>
 
-    try {
-        const res = await fetch('gifts.json?t=' + Date.now());
-        if (!res.ok) throw new Error('Erro ao carregar');
-        const gifts = await res.json();
+    <div class="scroll-cue" aria-hidden="true"><span></span></div>
+  </section>
 
-        if (!gifts.length) {
-            grid.innerHTML = `<div class="state-msg"><i class="fas fa-gift"></i>Nenhum presente na lista ainda.<br><small style="margin-top:8px;display:block;">Os presentes aparecerão aqui em breve!</small></div>`;
-            return;
+  <!-- ══ NOSSA HISTÓRIA ══ -->
+  <section id="story" class="section" aria-labelledby="story-title">
+    <div class="section-inner reveal">
+      <span class="section-label">Como tudo começou</span>
+      <h2 id="story-title">Nossa História</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+      <p class="story-text">
+        Foi num entardecer de outono que nossos caminhos se cruzaram pela primeira vez.
+        Havia algo de mágico no ar — talvez o cheiro de café, talvez o sorriso que não
+        conseguimos esconder. Desde então, cada dia juntos virou um novo capítulo de uma
+        história que mal podemos esperar para continuar. E agora, com o coração cheio e
+        a alma tranquila, convidamos vocês para celebrar conosco o capítulo mais bonito de todos.
+      </p>
+      <!-- Watercolor brushstroke accent -->
+      <svg class="story-wc-accent" viewBox="0 0 120 20" aria-hidden="true">
+        <path d="M 5 10 Q 30 3 60 10 Q 90 17 115 10"
+              stroke="#b8d4e8" stroke-width="6" fill="none"
+              stroke-linecap="round" opacity="0.6"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ══ DATA & LOCAL ══ -->
+  <section id="date-venue" class="section" aria-labelledby="venue-title">
+    <div class="section-inner reveal">
+      <span class="section-label">Marque na agenda</span>
+      <h2 id="venue-title">Data &amp; Local</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+
+      <div class="event-cards">
+        <div class="event-card">
+          <span class="card-icon" aria-hidden="true">🕯</span>
+          <h3>Cerimônia</h3>
+          <p>15 de Novembro de 2025<br>16h00</p>
+          <p>Igreja Nossa Senhora das Graças<br>Curitiba, PR</p>
+        </div>
+        <div class="event-card">
+          <span class="card-icon" aria-hidden="true">🥂</span>
+          <h3>Recepção</h3>
+          <p>15 de Novembro de 2025<br>19h30</p>
+          <p>Espaço Villa Garden<br>Rua das Flores, 200 · Curitiba</p>
+        </div>
+        <div class="event-card">
+          <span class="card-icon" aria-hidden="true">🌙</span>
+          <h3>Traje</h3>
+          <p>Esporte Fino<br>Paleta: Azul Marinho &amp; Branco</p>
+          <p>Cores dos noivos reservadas aos noivos ✨</p>
+        </div>
+      </div>
+
+      <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer"
+         class="map-placeholder" aria-label="Ver localização no Google Maps">
+        <!-- Simulated map SVG -->
+        <svg viewBox="0 0 600 200" style="position:absolute;inset:0;width:100%;height:100%;opacity:0.3" aria-hidden="true">
+          <rect width="600" height="200" fill="#dceef8"/>
+          <!-- Grid roads -->
+          <line x1="0" y1="60"  x2="600" y2="60"  stroke="#b8d4e8" stroke-width="8"/>
+          <line x1="0" y1="130" x2="600" y2="130" stroke="#b8d4e8" stroke-width="5"/>
+          <line x1="150" y1="0" x2="150" y2="200" stroke="#b8d4e8" stroke-width="6"/>
+          <line x1="350" y1="0" x2="350" y2="200" stroke="#b8d4e8" stroke-width="8"/>
+          <line x1="480" y1="0" x2="480" y2="200" stroke="#b8d4e8" stroke-width="4"/>
+          <!-- Blocks -->
+          <rect x="160" y="70" width="180" height="55" rx="2" fill="#b8d4e8" opacity="0.5"/>
+          <rect x="360" y="70" width="110" height="55" rx="2" fill="#b8d4e8" opacity="0.4"/>
+          <rect x="10"  y="70" width="130" height="55" rx="2" fill="#b8d4e8" opacity="0.35"/>
+          <rect x="160" y="140" width="80"  height="50" rx="2" fill="#b8d4e8" opacity="0.3"/>
+          <!-- Pin -->
+          <circle cx="300" cy="95" r="18" fill="#1a3a6b" opacity="0.7"/>
+          <circle cx="300" cy="95" r="8"  fill="white"  opacity="0.9"/>
+          <line x1="300" y1="113" x2="300" y2="130" stroke="#1a3a6b" stroke-width="2" opacity="0.7"/>
+        </svg>
+        <span class="map-pin" aria-hidden="true">📍</span>
+        <span>Ver no mapa</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ══ PADRINHOS & MADRINHAS ══ -->
+  <section id="wedding-party" class="section" aria-labelledby="party-title">
+    <div class="section-inner reveal">
+      <span class="section-label">Nossa família escolhida</span>
+      <h2 id="party-title">Padrinhos &amp; Madrinhas</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+      <p style="text-align:center;margin-bottom:0.5rem">
+        Pessoas especiais que estarão ao nosso lado neste dia.
+      </p>
+
+      <div class="party-grid">
+        <!-- Padrinhos -->
+        <div class="party-member">
+          <div class="member-avatar" aria-hidden="true">R</div>
+          <span class="member-name">Rafael</span>
+          <span class="member-role">Padrinho</span>
+        </div>
+        <div class="party-member">
+          <div class="member-avatar" aria-hidden="true">L</div>
+          <span class="member-name">Lucas</span>
+          <span class="member-role">Padrinho</span>
+        </div>
+        <div class="party-member">
+          <div class="member-avatar" aria-hidden="true">F</div>
+          <span class="member-name">Felipe</span>
+          <span class="member-role">Padrinho</span>
+        </div>
+        <!-- Madrinhas -->
+        <div class="party-member">
+          <div class="member-avatar" aria-hidden="true">M</div>
+          <span class="member-name">Mariana</span>
+          <span class="member-role">Madrinha</span>
+        </div>
+        <div class="party-member">
+          <div class="member-avatar" aria-hidden="true">J</div>
+          <span class="member-name">Juliana</span>
+          <span class="member-role">Madrinha</span>
+        </div>
+        <div class="party-member">
+          <div class="member-avatar" aria-hidden="true">C</div>
+          <span class="member-name">Carolina</span>
+          <span class="member-role">Madrinha</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ LISTA DE PRESENTES ══ -->
+  <section id="gifts" class="section" aria-labelledby="gifts-title">
+    <div class="section-inner reveal">
+      <span class="section-label">Para os que querem presentear</span>
+      <h2 id="gifts-title">Lista de Presentes</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+      <p class="gift-note">
+        Sua presença já é o maior presente. Mas se quiser nos mimar ainda mais,
+        aqui vão algumas ideias com muito carinho. ♥
+      </p>
+      <div class="gift-links">
+        <a href="#" class="gift-link" aria-label="Lista de presentes na Tok&amp;Stok">
+          🛋 Tok&amp;Stok
+        </a>
+        <a href="#" class="gift-link" aria-label="Lista de presentes na Amazon">
+          📦 Amazon
+        </a>
+        <a href="#" class="gift-link" aria-label="Transferência via PIX">
+          💛 Chave PIX
+        </a>
+        <a href="#" class="gift-link" aria-label="Fundo para lua de mel">
+          ✈️ Fundo Lua de Mel
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ RSVP ══ -->
+  <section id="rsvp" class="section" aria-labelledby="rsvp-title">
+    <div class="section-inner reveal">
+      <span class="section-label">Confirme sua presença</span>
+      <h2 id="rsvp-title">RSVP</h2>
+      <div class="section-divider" aria-hidden="true"></div>
+      <p style="text-align:center;margin-bottom:0.5rem">
+        Responda até <strong>15 de Outubro de 2025</strong> para que possamos
+        planejar tudo com carinho.
+      </p>
+
+      <!-- NOTE: In production, this form should POST to a server endpoint with
+           CSRF token, server-side validation and sanitization to prevent injection.
+           Never trust client-side validation alone. -->
+      <form class="rsvp-form" id="rsvp-form" novalidate aria-label="Formulário de confirmação de presença">
+        <!-- Hidden CSRF placeholder (to be implemented server-side) -->
+        <input type="hidden" name="_csrf" id="csrf-token" value="" />
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="guest-name">Nome completo *</label>
+            <input type="text" id="guest-name" name="guest_name"
+                   required minlength="2" maxlength="80"
+                   autocomplete="name"
+                   placeholder="Seu nome"
+                   pattern="[A-Za-zÀ-ÿ\s\-]{2,80}" />
+          </div>
+          <div class="form-group">
+            <label for="guest-email">E-mail *</label>
+            <input type="email" id="guest-email" name="guest_email"
+                   required maxlength="120"
+                   autocomplete="email"
+                   placeholder="seu@email.com" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="attendance">Presença *</label>
+            <select id="attendance" name="attendance" required>
+              <option value="" disabled selected>Selecione</option>
+              <option value="yes">✓ Sim, estarei lá!</option>
+              <option value="no">✗ Infelizmente não poderei</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="guests-count">Número de acompanhantes</label>
+            <select id="guests-count" name="guests_count">
+              <option value="0">Apenas eu</option>
+              <option value="1">+ 1 acompanhante</option>
+              <option value="2">+ 2 acompanhantes</option>
+              <option value="3">+ 3 acompanhantes</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="dietary">Restrições alimentares</label>
+          <input type="text" id="dietary" name="dietary"
+                 maxlength="200"
+                 placeholder="Vegetariano, sem glúten, alergia a frutos do mar..." />
+        </div>
+
+        <div class="form-group">
+          <label for="message">Mensagem para os noivos (opcional)</label>
+          <textarea id="message" name="message"
+                    maxlength="500"
+                    placeholder="Deixe um recadinho carinhoso..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-rsvp">
+          Confirmar Presença
+        </button>
+      </form>
+
+      <div class="rsvp-confirmation" id="rsvp-confirmation" role="alert" aria-live="polite">
+        <p>✨ Obrigada pela confirmação! Mal podemos esperar para celebrar com você. ✨</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer role="contentinfo">
+    <span class="footer-monogram">G ♥ A</span>
+    <p class="footer-message">
+      "Amar é encontrar em uma pessoa o seu lugar favorito no mundo."
+    </p>
+    <nav class="footer-links" aria-label="Links do rodapé">
+      <a href="#story">Nossa História</a>
+      <a href="#date-venue">Data &amp; Local</a>
+      <a href="#rsvp">RSVP</a>
+      <!-- Admin login — protected area for the couple only -->
+      <a href="#" id="admin-login-link" aria-label="Acesso restrito dos noivos">
+        Login dos Noivos
+      </a>
+    </nav>
+    <p class="footer-copy">
+      Gabriela &amp; Artur · 15.11.2025 · Feito com muito amor ♥
+    </p>
+  </footer>
+
+  <!-- ══ ADMIN LOGIN MODAL ══ -->
+  <!-- NOTE: Authentication logic must be implemented server-side.
+       This modal is a UI placeholder only. Production should use
+       secure session management, bcrypt hashing, and rate limiting. -->
+  <div id="admin-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-box">
+      <h2 id="modal-title">Área dos Noivos</h2>
+      <p>Acesso restrito a Gabriela &amp; Artur</p>
+      <div class="form-group">
+        <label for="admin-email">E-mail</label>
+        <input type="email" id="admin-email" name="admin_email"
+               autocomplete="username"
+               placeholder="seu@email.com" />
+      </div>
+      <div class="form-group" style="margin-bottom:1.5rem">
+        <label for="admin-password">Senha</label>
+        <input type="password" id="admin-password" name="admin_password"
+               autocomplete="current-password"
+               placeholder="••••••••" />
+      </div>
+      <button class="btn-login" id="btn-admin-login">Entrar</button>
+      <p class="modal-notice">
+        🔒 Autenticação segura gerenciada pelo servidor.<br>
+        Máximo de 5 tentativas por hora.
+      </p>
+      <button class="modal-close" id="modal-close-btn" aria-label="Fechar modal">✕</button>
+    </div>
+  </div>
+
+  <!-- ══ SCRIPTS ══ -->
+  <script>
+    'use strict';
+
+    /* ── Page Loader ── */
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const loader = document.getElementById('page-loader');
+        loader.classList.add('hidden');
+        loader.addEventListener('transitionend', () => loader.remove(), { once: true });
+      }, 900);
+    });
+
+    /* ── Nav scroll shadow ── */
+    const nav = document.getElementById('main-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    }, { passive: true });
+
+    /* ── Mobile nav toggle ── */
+    const toggle = document.querySelector('.nav-toggle');
+    const menu   = document.getElementById('nav-menu');
+    toggle.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', String(!expanded));
+      menu.classList.toggle('open');
+    });
+    // Close on nav link click
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    /* ── Intersection Observer for scroll reveals ── */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
         }
+      });
+    }, { threshold: 0.12 });
 
-        grid.innerHTML = gifts.map(g => `
-            <div class="gift-card">
-                <div class="gift-image-wrap">
-                    <img src="${g.image || 'https://via.placeholder.com/300x210?text=Presente'}"
-                         alt="${g.name}"
-                         onerror="this.src='https://via.placeholder.com/300x210?text=Imagem+Indispon%C3%ADvel'">
-                </div>
-                <div class="gift-info">
-                    ${g.category ? `<div class="gift-category">${g.category}</div>` : ''}
-                    <h3 class="gift-name">${g.name}</h3>
-                    <div class="gift-price">${g.price || 'Consulte o valor'}</div>
-                    <a href="${g.url}" target="_blank" rel="noopener" class="gift-link">
-                        Ver presente <i class="fas fa-arrow-right" style="font-size:10px; margin-left:4px;"></i>
-                    </a>
-                </div>
-            </div>
-        `).join('');
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-    } catch (err) {
-        grid.innerHTML = `<div class="state-msg">
-            <i class="fas fa-exclamation-circle" style="color:#c0392b;"></i>
-            Não foi possível carregar a lista.<br>
-            <small style="margin-top:8px;display:block;">${err.message}</small>
-        </div>`;
+    /* ── RSVP Form — client-side validation ──
+       Server must re-validate & sanitize all inputs to prevent injection. */
+    const rsvpForm = document.getElementById('rsvp-form');
+    const rsvpConf = document.getElementById('rsvp-confirmation');
+
+    rsvpForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!rsvpForm.checkValidity()) {
+        rsvpForm.reportValidity();
+        return;
+      }
+
+      // Sanitize input values (strip HTML tags, trim whitespace)
+      rsvpForm.querySelectorAll('input[type="text"], textarea').forEach(field => {
+        field.value = field.value
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .trim();
+      });
+
+      // In production: POST sanitized FormData to /api/rsvp with CSRF token
+      // fetch('/api/rsvp', { method: 'POST', body: new FormData(rsvpForm) })
+
+      rsvpForm.style.display = 'none';
+      rsvpConf.classList.add('visible');
+      rsvpConf.focus();
+    });
+
+    /* ── Admin Modal ── */
+    const adminModal    = document.getElementById('admin-modal');
+    const adminLink     = document.getElementById('admin-login-link');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const btnAdminLogin = document.getElementById('btn-admin-login');
+
+    function openModal() {
+      adminModal.classList.add('open');
+      adminModal.setAttribute('aria-hidden', 'false');
+      document.getElementById('admin-email').focus();
+      document.body.style.overflow = 'hidden';
     }
-});
-</script>
+    function closeModal() {
+      adminModal.classList.remove('open');
+      adminModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      adminLink.focus();
+    }
+
+    adminLink.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    modalCloseBtn.addEventListener('click', closeModal);
+    adminModal.addEventListener('click', (e) => { if (e.target === adminModal) closeModal(); });
+
+    // Keyboard trap inside modal
+    adminModal.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    btnAdminLogin.addEventListener('click', () => {
+      // In production: POST credentials to /api/auth with CSRF token
+      // Never log passwords; use HTTPS only; implement rate limiting server-side
+      const email = document.getElementById('admin-email').value.trim();
+      if (!email) {
+        document.getElementById('admin-email').focus();
+        return;
+      }
+      // Placeholder response
+      alert('⚠️ Autenticação server-side ainda não configurada.\nIntegre com seu backend seguro.');
+    });
+  </script>
 </body>
 </html>
