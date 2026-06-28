@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adicionar Presente - Admin</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-gift"></i>
+                <h1>Painel de Controle</h1>
+            </div>
+            <nav>
+                <a href="index.html">Ver Lista</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="admin-container">
+            <h2><i class="fas fa-plus-circle"></i> Novo Presente</h2>
+            <p style="margin-bottom: 25px; color: var(--gray-medium);">Preencha os dados abaixo para gerar o código que você deve colar no arquivo <strong>gifts.json</strong> no seu GitHub.</p>
+            
+            <form id="gift-form">
+                <div class="form-group">
+                    <label for="name">Nome do Presente</label>
+                    <input type="text" id="name" placeholder="Ex: Fritadeira Elétrica Airfryer" required>
+                </div>
+                <div class="form-group">
+                    <label for="url">URL do Produto (Link da loja)</label>
+                    <input type="url" id="url" placeholder="https://www.loja.com/produto..." required>
+                </div>
+                <div class="form-group">
+                    <label for="image">URL da Imagem (Opcional)</label>
+                    <input type="url" id="image" placeholder="https://www.loja.com/imagem.jpg">
+                </div>
+                <div class="form-group">
+                    <label for="price">Preço (Ex: R$ 299,90)</label>
+                    <input type="text" id="price" placeholder="R$ 0,00">
+                </div>
+                <button type="submit" class="btn-submit">Gerar Código para o GitHub</button>
+            </form>
+
+            <div id="output-area" class="output-area">
+                <p><strong>Passo 1:</strong> Copie o código abaixo:</p>
+                <pre><code id="json-output"></code></pre>
+                <div class="copy-hint">
+                    <i class="fas fa-info-circle"></i> <strong>Passo 2:</strong> 
+                    <ol style="margin-left: 20px; margin-top: 10px;">
+                        <li>Vá no seu GitHub.</li>
+                        <li>Abra o arquivo <code>gifts.json</code>.</li>
+                        <li>Clique no ícone de lápis para editar.</li>
+                        <li>Cole o código copiado <strong>antes</strong> do último colchete <code>]</code>.</li>
+                        <li>Se já houver itens, lembre-se de colocar uma vírgula <code>,</code> entre eles.</li>
+                    </ol>
+                </div>
+                <button onclick="copyToClipboard()" class="btn-submit" style="margin-top: 15px; background-color: var(--royal-blue);">Copiar Código</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('gift-form');
+        const outputArea = document.getElementById('output-area');
+        const jsonOutput = document.getElementById('json-output');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const gift = {
+                id: Date.now(),
+                name: document.getElementById('name').value,
+                url: document.getElementById('url').value,
+                image: document.getElementById('image').value || 'https://via.placeholder.com/300x200?text=Sem+Imagem',
+                price: document.getElementById('price').value || 'Preço sob consulta'
+            };
+
+            const jsonString = JSON.stringify(gift, null, 2);
+            jsonOutput.textContent = jsonString;
+            outputArea.style.display = 'block';
+            
+            outputArea.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function copyToClipboard() {
+            const text = jsonOutput.textContent;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('Código copiado! Agora cole no seu arquivo gifts.json no GitHub.');
+            });
+        }
+    </script>
+</body>
+</html>

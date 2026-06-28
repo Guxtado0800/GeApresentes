@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossa Lista de Presentes</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-gift"></i>
+                <h1>Lista de Presentes</h1>
+            </div>
+            <nav>
+                <a href="index.html">Início</a>
+                <a href="admin.html" class="admin-btn"><i class="fas fa-plus-circle"></i> Adicionar</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Itens que Adoraríamos Ganhar</h2>
+                <p>Olá! Criamos esta lista para facilitar a escolha de um presente que realmente nos ajude. Obrigado pelo carinho!</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="container">
+        <div id="gift-grid" class="gift-grid">
+            <!-- Os presentes serão carregados aqui via JS -->
+            <div class="loading">Carregando presentes...</div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 - Nossa Lista de Presentes. Feito com <i class="fas fa-heart" style="color: #e74c3c;"></i></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

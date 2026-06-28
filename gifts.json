@@ -1,0 +1,10 @@
+[
+  {
+    "id": 1,
+    "name": "Exemplo de Presente",
+    "url": "https://www.google.com",
+    "image": "https://via.placeholder.com/300x200?text=Presente+Exemplo",
+    "price": "R$ 99,90",
+    "category": "Casa"
+  }
+]
